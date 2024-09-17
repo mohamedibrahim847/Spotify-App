@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening Insights Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Listening Insights Dashboard</h1>
+
+    <!-- Line chart for total time in the last 24 hours -->
+    <h2>Total Listening Time (Last 24 Hours)</h2>
+    <canvas id="listeningTimeChart" width="400" height="200"></canvas>
+
+    <!-- Pie chart for Recently Played Genres -->
+    <h2>Recently Played Genres</h2>
+    <canvas id="genreChart" width="400" height="200"></canvas>
+
+    <script>
+        // Listening Time in the last 24 hours (Line Chart)
+        const ctxListeningTime = document.getElementById('listeningTimeChart').getContext('2d');
+        const listeningTimeData = <%- JSON.stringify(listeningTimeData) %>;
+        const listeningTimeChart = new Chart(ctxListeningTime, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 24 }, (_, i) => `${i}:00`), // Labels for each hour of the day
+                datasets: [{
+                    label: 'Minutes Listened',
+                    data: listeningTimeData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            }
+        });
+
+        // Recently Played Genres (Pie Chart)
+        const ctxGenre = document.getElementById('genreChart').getContext('2d');
+        const genreLabels = <%- JSON.stringify(topGenres) %>;
+        const genreData = <%- JSON.stringify(genreData) %>;
+        const genreChart = new Chart(ctxGenre, {
+            type: 'pie',
+            data: {
+                labels: genreLabels,
+                datasets: [{
+                    label: 'Recently Played Genres',
+                    data: genreData,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

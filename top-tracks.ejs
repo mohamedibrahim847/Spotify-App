@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Top Spotify Tracks</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Your Top Spotify Tracks</h1>
+    <ul>
+        <% tracks.forEach(track => { %>
+            <li>
+                <div class="track-info">
+                    <img src="<%= track.album.images[0].url %>" alt="Album cover" width="80" height="80">
+                    <div>
+                        <strong><%= track.name %></strong> <br>
+                        <span class="artist">by <%= track.artists.map(artist => artist.name).join(', ') %></span><br>
+                        <span class="album">Album: <%= track.album.name %></span>
+                    </div>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

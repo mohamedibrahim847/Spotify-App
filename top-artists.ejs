@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Top Artists</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Your Top Artists</h1>
+    <ul>
+        <% artists.forEach(artist => { %>
+            <li>
+                <div class="artist-info">
+                    <img src="<%= artist.images[0] ? artist.images[0].url : '/default-avatar.png' %>" alt="Artist Image" width="80" height="80">
+                    <div>
+                        <strong><%= artist.name %></strong> <br>
+                        <div class="track-info">
+                            <span>Most Listened Track: <%= artist.mostListenedTrack ? artist.mostListenedTrack.name : 'N/A' %></span>
+                            <br>
+                            <span>Album: <%= artist.mostListenedTrack ? artist.mostListenedTrack.album.name : 'N/A' %></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

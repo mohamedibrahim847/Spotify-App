@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="menu-container">
+        <!-- Top menu links -->
+        <div class="menu-buttons">
+            <a href="/get-top-tracks" class="menu-button">Top Tracks</a>
+            <a href="/get-top-artists" class="menu-button">Top Artists</a>
+            <a href="/get-top-albums" class="menu-button">Top Albums</a>
+            <a href="/dashboard" class="menu-button">Listening History</a>
+        </div>
+
+        <!-- Playlist Creation Section -->
+        <h2 class="section-title">Playlist Creation</h2>
+
+        <!-- use POST to submit playlist names -->
+        <form action="/create-playlist" method="POST" class="playlist-form">
+            <div class="playlist-section">
+                <label for="energetic-name">Energetic</label>
+                <input type="text" id="energetic-name" name="energetic-name" placeholder="Enter name">
+            </div>
+
+            <div class="playlist-section">
+                <label for="mellow-name">Mellow</label>
+                <input type="text" id="mellow-name" name="mellow-name" placeholder="Enter name">
+            </div>
+
+            <div class="playlist-section">
+                <label for="low-energy-name">Low Energy</label>
+                <input type="text" id="low-energy-name" name="low-energy-name" placeholder="Enter name">
+            </div>
+
+            <!-- centered submit button -->
+            <div class="submit-container">
+                <button type="submit" class="submit-button">Create Playlists</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
